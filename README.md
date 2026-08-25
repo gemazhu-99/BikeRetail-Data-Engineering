@@ -242,9 +242,6 @@ ORDER BY total_spent DESC;
 
 **Key Insight:** Pamelia Newman was the highest-value customer, generating approximately **$37.8K in total spending** across **3 orders** and **18 units purchased**. Abby Gamble followed closely with approximately **$37.5K from only 2 orders**, suggesting that customer value was influenced by both purchase frequency and average order value.
 
-## Challenges & Solutions
-
-Several data engineering challenges were encountered while building and executing the ETL pipeline. These issues required debugging across source data, SSIS transformations, SQL Server connections, and table dependencies.
 
 ## Challenges & Solutions
 
