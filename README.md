@@ -210,7 +210,7 @@ ORDER BY revenue DESC;
 <img width="546" height="151" alt="image" src="https://github.com/user-attachments/assets/9774a5b6-5b9d-42e1-94ed-5cc5f82890f0" />
 
 
-**Key Insight:** Baldwin Bikes was the strongest-performing location, generating approximately **$5.83M in revenue** from **1,093 orders** and **4,779 units sold**. This represented roughly **68% of total revenue across the three stores**, substantially outperforming Santa Cruz Bikes and Rowlett Bikes.
+**Key Insight:** Trek Slash 8 27.5 - 2016 generated the highest revenue at approximately **$616K**, with **154 units sold**. Several Trek models also ranked among the top-performing products by revenue.
 
 
 ## Challenges & Solutions
