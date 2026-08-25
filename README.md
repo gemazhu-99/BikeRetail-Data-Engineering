@@ -127,6 +127,37 @@ SELECT 'order_items', COUNT(*) FROM dbo.order_items;
 | orders | 1,615 |
 | order_items | 4,722 |
 
+### NULL Validation
+
+The `shipped_date` field was validated after loading to confirm that unshipped orders were stored as true SQL `NULL` values rather than the source string `"NULL"`.
+
+```sql
+SELECT *
+FROM dbo.orders
+WHERE shipped_date IS NULL;
+```
+
+The validation confirmed that missing shipping dates were successfully preserved as SQL `NULL` values after the SSIS transformation.
+
+<img width="918" height="618" alt="image" src="https://github.com/user-attachments/assets/4b6a1c2d-f9ce-4f3e-bada-20348a5cfce1" />
+
+### Referential Integrity Validation
+
+Foreign key relationships were also validated to ensure that transactional records reference valid parent records.
+
+For example, the following query checks for orders associated with nonexistent customers:
+
+```sql
+SELECT o.*
+FROM dbo.orders o
+LEFT JOIN dbo.customers c
+    ON o.customer_id = c.customer_id
+WHERE c.customer_id IS NULL;
+```
+
+The query returned **0 rows**, confirming that all orders reference valid customer records.
+
+
 ## SQL Business Analysis
 
 SQL queries were used to analyze product sales, revenue, store performance, and customer behavior.
