@@ -64,13 +64,30 @@ All nine target tables were loaded successfully while preserving dependency orde
 
 ## Data Transformation
 
-The pipeline handles source data quality issues before loading data into SQL Server.
+During the ETL process, several source fields required transformation before they could be loaded safely into SQL Server.
 
-### NULL Handling
+### NULL Handling for `shipped_date`
 
-The `shipped_date` field contains NULL values for orders that have not yet shipped. A Derived Column transformation preserves these values as SQL NULL rather than treating them as invalid dates.
+The source `orders.csv` file contains `"NULL"` values in the `shipped_date` column for orders that have not yet been shipped.
+
+Directly converting the entire column to a date type caused SSIS conversion errors. To resolve this, the source column was first treated as a string and then transformed using a Derived Column component.
+
+```text
+shipped_date == "NULL"
+    ? NULL(DT_DBDATE)
+    : (DT_DBDATE)shipped_date
 
 <img width="1474" height="1069" alt="image" src="https://github.com/user-attachments/assets/d81b860d-dac2-469e-a445-632384c34cdf" />
+
+### Additional Data Preparation
+
+Other ETL preparation steps included:
+
+- Configuring UTF-8 source encoding
+- Increasing string column widths to prevent truncation
+- Converting numeric price and discount fields to appropriate decimal data types
+- Converting `manager_id` source `"NULL"` values into SQL `NULL`
+- Aligning source and destination metadata before loading
 
 
 ## Data Quality & Validation
