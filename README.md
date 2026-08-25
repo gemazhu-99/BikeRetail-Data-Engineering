@@ -59,14 +59,8 @@ The complete ETL workflow was executed successfully after resolving data type, N
 
 <img width="558" height="696" alt="image" src="https://github.com/user-attachments/assets/e36cd068-1651-48fe-ac15-bb63b08fdc08" />
 
+All nine target tables were loaded successfully while preserving dependency order and referential integrity.
 
-
-
-**Load sequence:**
-
-Reset Tables → Brands → Categories → Customers → Stores → Staffs → Products → Stocks → Orders → Order Items
-
-Green precedence constraints ensure dependent tables are loaded only after their parent tables complete successfully.
 
 ## Data Transformation
 
