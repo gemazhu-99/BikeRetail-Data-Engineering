@@ -76,11 +76,11 @@ Directly converting the entire column to a date type caused SSIS conversion erro
 shipped_date == "NULL"
     ? NULL(DT_DBDATE)
     : (DT_DBDATE)shipped_date
-
+```
 <img width="1474" height="1069" alt="image" src="https://github.com/user-attachments/assets/d81b860d-dac2-469e-a445-632384c34cdf" />
 
+This transformation preserves missing shipping dates as SQL `NULL` values while converting valid date strings into the `DT_DBDATE` data type.
 
-```markdown
 ### Additional Data Preparation
 
 Other ETL preparation steps included:
@@ -90,7 +90,6 @@ Other ETL preparation steps included:
 - Converting numeric price and discount fields to appropriate decimal data types
 - Converting `manager_id` source `"NULL"` values into SQL `NULL`
 - Aligning source and destination metadata before loading
-
 
 ## Data Quality & Validation
 
