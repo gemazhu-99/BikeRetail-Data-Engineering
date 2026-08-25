@@ -20,11 +20,16 @@ Raw CSV Files → SSIS ETL → Data Cleaning & Transformation → SQL Server →
 
 ## Database Design
 
-The database contains 9 relational tables:
+The final SQL Server database contains 9 relational tables:
 
 `brands` · `categories` · `customers` · `stores` · `staffs` · `products` · `stocks` · `orders` · `order_items`
 
-### ER Diagram
+### Conceptual ER Diagram
+
+The initial ERD was developed to model the major business entities and relationships across products, customers, stores, staff, inventory, and orders.
+
+During implementation, the schema was aligned with the BikeStores source structure, resulting in nine final tables in SQL Server.
+
 
 <img width="1095" height="1261" alt="image" src="https://github.com/user-attachments/assets/98f07091-ebb1-47ca-bf3b-d7f77171f6d7" />
 
