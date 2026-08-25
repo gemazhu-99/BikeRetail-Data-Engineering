@@ -39,11 +39,19 @@ The schema preserves primary/foreign key relationships between customers, orders
 
 ## ETL Architecture
 
-The SSIS package loads the source datasets into SQL Server while respecting table dependencies.
+The ETL pipeline was developed in SSIS to extract raw CSV data, transform source fields when necessary, and load the data into SQL Server.
 
-### Control Flow
+### SSIS Control Flow
+
+The workflow follows a dependency-aware loading sequence to preserve foreign key relationships between tables.
+
+**Load Sequence:**
+
+`Reset Tables → Brands → Categories → Customers → Stores → Staffs → Products → Stocks → Orders → Order Items`
 
 <img width="580" height="730" alt="image" src="https://github.com/user-attachments/assets/404938a6-cd0c-4862-a3d8-5f732a288db6" />
+
+Green precedence constraints ensure that each downstream task executes only after the previous task completes successfully.
 
 
 **Load sequence:**
