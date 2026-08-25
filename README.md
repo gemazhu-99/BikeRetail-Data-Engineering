@@ -31,7 +31,8 @@ The initial ERD was developed to model the major business entities and relations
 During implementation, the schema was aligned with the BikeStores source structure, resulting in nine final tables in SQL Server.
 
 
-<img width="1095" height="1261" alt="image" src="https://github.com/user-attachments/assets/98f07091-ebb1-47ca-bf3b-d7f77171f6d7" />
+<img width="942" height="1182" alt="image" src="https://github.com/user-attachments/assets/157f979d-bc45-41ac-aeaf-331e1878d638" />
+
 
 
 The schema preserves primary/foreign key relationships between customers, orders, products, stores, staff, and inventory.
