@@ -182,9 +182,8 @@ ORDER BY revenue DESC;
 ```
 <img width="586" height="54" alt="image" src="https://github.com/user-attachments/assets/5b62665f-498c-43ee-98dd-b68991b9d64d" />
 
-```markdown
-The analysis shows that **Trek Slash 8 27.5 - 2016** generated the highest revenue at approximately **$616K**, while several other Trek models also ranked among the top-performing products.
-```
+**Key Insight:** Trek Slash 8 27.5 - 2016 generated the highest revenue at approximately **$616K**, with **154 units sold**. Several other Trek models also ranked among the top-performing products.
+
 ### Store Performance
 
 Store-level performance was analyzed by combining order and order item data to compare total orders, units sold, and revenue across locations.
