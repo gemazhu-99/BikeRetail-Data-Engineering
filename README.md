@@ -79,6 +79,8 @@ shipped_date == "NULL"
 
 <img width="1474" height="1069" alt="image" src="https://github.com/user-attachments/assets/d81b860d-dac2-469e-a445-632384c34cdf" />
 
+
+```markdown
 ### Additional Data Preparation
 
 Other ETL preparation steps included:
