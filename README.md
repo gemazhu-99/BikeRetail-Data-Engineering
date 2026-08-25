@@ -211,6 +211,41 @@ ORDER BY revenue DESC;
 
 **Key Insight:** Baldwin Bikes was the strongest-performing location, generating approximately **$5.83M in revenue** from **1,093 orders** and **4,779 units sold**. This represented roughly **68% of total revenue across the three stores**, substantially outperforming Santa Cruz Bikes and Rowlett Bikes.
 
+### Customer Analysis
+
+Customer purchasing behavior was analyzed to identify the highest-value customers based on total spending, order frequency, and units purchased.
+
+```sql
+SELECT TOP 10
+    c.customer_id,
+    CONCAT(c.first_name, ' ', c.last_name) AS customer_name,
+    COUNT(DISTINCT o.order_id) AS total_orders,
+    SUM(oi.quantity) AS units_purchased,
+    ROUND(
+        SUM(oi.quantity * oi.list_price * (1 - oi.discount)),
+        2
+    ) AS total_spent
+FROM dbo.customers c
+JOIN dbo.orders o
+    ON c.customer_id = o.customer_id
+JOIN dbo.order_items oi
+    ON o.order_id = oi.order_id
+GROUP BY
+    c.customer_id,
+    c.first_name,
+    c.last_name
+ORDER BY total_spent DESC;
+```
+
+<img width="691" height="331" alt="image" src="https://github.com/user-attachments/assets/a9b84b02-0d03-4cbe-9a4c-4d9b2f55c488" />
+
+
+**Key Insight:** Pamelia Newman was the highest-value customer, generating approximately **$37.8K in total spending** across **3 orders** and **18 units purchased**. Abby Gamble followed closely with approximately **$37.5K** in spending from only **2 orders**, indicating that high customer value was driven not only by purchase frequency but also by order value.
+
+
+
+
+
 
 ## Challenges & Solutions
 
