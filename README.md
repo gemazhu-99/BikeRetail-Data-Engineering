@@ -240,29 +240,65 @@ ORDER BY total_spent DESC;
 <img width="691" height="331" alt="image" src="https://github.com/user-attachments/assets/a9b84b02-0d03-4cbe-9a4c-4d9b2f55c488" />
 
 
-**Key Insight:** Pamelia Newman was the highest-value customer, generating approximately **$37.8K in total spending** across **3 orders** and **18 units purchased**. Abby Gamble followed closely with approximately **$37.5K** in spending from only **2 orders**, indicating that high customer value was driven not only by purchase frequency but also by order value.
-
-
-
-
-
+**Key Insight:** Pamelia Newman was the highest-value customer, generating approximately **$37.8K in total spending** across **3 orders** and **18 units purchased**. Abby Gamble followed closely with approximately **$37.5K from only 2 orders**, suggesting that customer value was influenced by both purchase frequency and average order value.
 
 ## Challenges & Solutions
 
-### Handling NULL Shipping Dates
-**Challenge:** `NULL` values in `shipped_date` caused SSIS date conversion failures.
+Several data engineering challenges were encountered while building and executing the ETL pipeline. These issues required debugging across source data, SSIS transformations, SQL Server connections, and table dependencies.
 
-**Solution:** Added a Derived Column transformation to correctly preserve missing shipping dates as SQL NULL values.
+## Challenges & Solutions
 
-### Duplicate Data During Re-runs
-**Challenge:** Re-running the ETL package caused primary-key violations.
+Several data engineering challenges were encountered while building and executing the ETL pipeline. These issues required debugging across source data, SSIS transformations, SQL Server connections, and table dependencies.
 
-**Solution:** Added a Reset BikeStore Tables SQL task before the ETL workflow, making the pipeline safely re-runnable.
+### 1. NULL Date Handling
 
-### Foreign Key Dependencies
-**Challenge:** Tables must be loaded in the correct order because of relational dependencies.
+**Challenge:**  
+The `shipped_date` column in the source CSV contained the string `"NULL"` for orders that had not yet been shipped. Directly converting the column to a SQL date type caused SSIS conversion errors.
 
-**Solution:** Implemented SSIS precedence constraints to enforce the required load sequence.
+**Solution:**  
+The source field was initially treated as a string and transformed using an SSIS Derived Column:
+
+```text
+shipped_date == "NULL"
+    ? NULL(DT_DBDATE)
+    : (DT_DBDATE)shipped_date
+```
+
+This converted source `"NULL"` strings into true SQL `NULL` values while preserving valid shipping dates.
+
+---
+
+### 2. Data Type and Metadata Mismatches
+
+**Challenge:**  
+Several source columns did not initially match the SQL Server destination schema, causing conversion and truncation errors during loading.
+
+**Solution:**  
+Source metadata and destination data types were aligned by adjusting string lengths, configuring UTF-8 encoding, and converting numeric and date fields to compatible SQL Server data types.
+
+---
+
+### 3. Database Connection Configuration
+
+**Challenge:**  
+During pipeline development, the SSIS package initially failed to acquire the SQL Server connection used by the reset and loading tasks.
+
+**Solution:**  
+The connection manager configuration was corrected and the package was revalidated before execution. After updating the connection settings, the reset task and downstream ETL tasks executed successfully.
+
+---
+
+### 4. Foreign Key Load Dependencies
+
+**Challenge:**  
+Loading related tables in the wrong order could cause foreign key violations because child records depended on parent records that had not yet been loaded.
+
+**Solution:**  
+SSIS precedence constraints were used to enforce a dependency-aware loading sequence:
+
+`Brands → Categories → Customers → Stores → Staffs → Products → Stocks → Orders → Order Items`
+
+This ensured that parent tables were populated before dependent transactional tables.
 
 ## Project Structure
 
