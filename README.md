@@ -75,7 +75,8 @@ After the ETL process completes, SQL validation queries verify row counts, NULL 
 | orders | 1,615 |
 | order_items | 4,722 |
 
-[放你 Row Count SQL 截图]
+<img width="280" height="300" alt="image" src="https://github.com/user-attachments/assets/105c2414-0028-4827-bae3-90cff81b58b5" />
+
 
 Referential integrity checks confirmed that all orders reference valid customers.
 
@@ -85,7 +86,8 @@ SQL queries were used to analyze product sales, revenue, store performance, and 
 
 ### Top Products by Revenue
 
-[放你 Top 10 Products SQL + Results 截图]
+<img width="612" height="325" alt="image" src="https://github.com/user-attachments/assets/10d83d97-1b03-4c27-8d54-6e656d525bae" />
+
 
 Revenue was calculated as:
 
