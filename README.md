@@ -53,6 +53,14 @@ The workflow follows a dependency-aware loading sequence to preserve foreign key
 
 Green precedence constraints ensure that each downstream task executes only after the previous task completes successfully.
 
+### Successful Pipeline Execution
+
+The complete ETL workflow was executed successfully after resolving data type, NULL handling, connection, and dependency issues.
+
+<img width="558" height="696" alt="image" src="https://github.com/user-attachments/assets/e36cd068-1651-48fe-ac15-bb63b08fdc08" />
+
+
+
 
 **Load sequence:**
 
