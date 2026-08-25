@@ -91,13 +91,31 @@ Other ETL preparation steps included:
 - Converting `manager_id` source `"NULL"` values into SQL `NULL`
 - Aligning source and destination metadata before loading
 
-## Data Quality & Validation
-
-After the ETL process completes, SQL validation queries verify row counts, NULL handling, and referential integrity.
-
 ### Row Count Validation
 
-| Table | Rows |
+After the ETL pipeline completed, row counts were validated across all nine destination tables to confirm that the expected records were successfully loaded into SQL Server.
+
+```sql
+SELECT 'brands' AS table_name, COUNT(*) AS row_count FROM dbo.brands
+UNION ALL
+SELECT 'categories', COUNT(*) FROM dbo.categories
+UNION ALL
+SELECT 'customers', COUNT(*) FROM dbo.customers
+UNION ALL
+SELECT 'stores', COUNT(*) FROM dbo.stores
+UNION ALL
+SELECT 'staffs', COUNT(*) FROM dbo.staffs
+UNION ALL
+SELECT 'products', COUNT(*) FROM dbo.products
+UNION ALL
+SELECT 'stocks', COUNT(*) FROM dbo.stocks
+UNION ALL
+SELECT 'orders', COUNT(*) FROM dbo.orders
+UNION ALL
+SELECT 'order_items', COUNT(*) FROM dbo.order_items;
+```
+
+| Table | Row Count |
 |---|---:|
 | brands | 9 |
 | categories | 7 |
@@ -108,11 +126,6 @@ After the ETL process completes, SQL validation queries verify row counts, NULL 
 | stocks | 939 |
 | orders | 1,615 |
 | order_items | 4,722 |
-
-<img width="280" height="300" alt="image" src="https://github.com/user-attachments/assets/105c2414-0028-4827-bae3-90cff81b58b5" />
-
-
-Referential integrity checks confirmed that all orders reference valid customers.
 
 ## SQL Business Analysis
 
