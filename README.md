@@ -155,21 +155,63 @@ LEFT JOIN dbo.customers c
 WHERE c.customer_id IS NULL;
 ```
 
-The query returned **0 rows**, confirming that all orders reference valid customer records.
+The query returned 0 rows, indicating that no orphaned order records were found and that all customer_id values in the orders table reference valid customer records.
 
 
 ## SQL Business Analysis
 
-SQL queries were used to analyze product sales, revenue, store performance, and customer behavior.
+After validating the ETL pipeline, SQL queries were used to analyze sales performance and extract business insights from the integrated BikeStore database.
 
 ### Top Products by Revenue
 
-<img width="612" height="325" alt="image" src="https://github.com/user-attachments/assets/10d83d97-1b03-4c27-8d54-6e656d525bae" />
+Product-level sales performance was analyzed using total units sold and revenue after discounts.
+
+```sql
+SELECT TOP 10
+    p.product_name,
+    SUM(oi.quantity) AS units_sold,
+    ROUND(
+        SUM(oi.quantity * oi.list_price * (1 - oi.discount)),
+        2
+    ) AS revenue
+FROM dbo.order_items oi
+JOIN dbo.products p
+    ON oi.product_id = p.product_id
+GROUP BY p.product_name
+ORDER BY revenue DESC;
+```
+<img width="586" height="54" alt="image" src="https://github.com/user-attachments/assets/5b62665f-498c-43ee-98dd-b68991b9d64d" />
+
+```markdown
+The analysis shows that **Trek Slash 8 27.5 - 2016** generated the highest revenue at approximately **$616K**, while several other Trek models also ranked among the top-performing products.
+```
+### Store Performance
+
+Store-level performance was analyzed by combining order and order item data to compare total orders, units sold, and revenue across locations.
+
+```sql
+SELECT
+    s.store_name,
+    COUNT(DISTINCT o.order_id) AS total_orders,
+    SUM(oi.quantity) AS units_sold,
+    ROUND(
+        SUM(oi.quantity * oi.list_price * (1 - oi.discount)),
+        2
+    ) AS revenue
+FROM dbo.stores s
+JOIN dbo.orders o
+    ON s.store_id = o.store_id
+JOIN dbo.order_items oi
+    ON o.order_id = oi.order_id
+GROUP BY s.store_name
+ORDER BY revenue DESC;
+```
+
+<img width="546" height="151" alt="image" src="https://github.com/user-attachments/assets/9774a5b6-5b9d-42e1-94ed-5cc5f82890f0" />
 
 
-Revenue was calculated as:
+**Key Insight:** Baldwin Bikes was the strongest-performing location, generating approximately **$5.83M in revenue** from **1,093 orders** and **4,779 units sold**. This represented roughly **68% of total revenue across the three stores**, substantially outperforming Santa Cruz Bikes and Rowlett Bikes.
 
-`quantity × list_price × (1 - discount)`
 
 ## Challenges & Solutions
 
