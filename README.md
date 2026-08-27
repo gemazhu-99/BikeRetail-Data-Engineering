@@ -49,7 +49,7 @@ The workflow follows a dependency-aware loading sequence to preserve foreign key
 
 `Reset Tables → Brands → Categories → Customers → Stores → Staffs → Products → Stocks → Orders → Order Items`
 
-<img width="580" height="730" alt="image" src="https://github.com/user-attachments/assets/404938a6-cd0c-4862-a3d8-5f732a288db6" />
+![SSIS Control Flow](screenshots/control_flow.png)
 
 Green precedence constraints ensure that each downstream task executes only after the previous task completes successfully.
 
