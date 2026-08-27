@@ -57,7 +57,6 @@ The complete ETL workflow was executed successfully after resolving data type, N
 
 All nine target tables were loaded successfully while preserving dependency order and referential integrity.
 
-
 ## Data Transformation
 
 During the ETL process, several source fields required transformation before they could be loaded safely into SQL Server.
@@ -73,7 +72,8 @@ shipped_date == "NULL"
     ? NULL(DT_DBDATE)
     : (DT_DBDATE)shipped_date
 ```
-<img width="1474" height="1069" alt="image" src="https://github.com/user-attachments/assets/d81b860d-dac2-469e-a445-632384c34cdf" />
+![NULL Handling](screenshots/null_handling.png)
+
 
 This transformation preserves missing shipping dates as SQL `NULL` values while converting valid date strings into the `DT_DBDATE` data type.
 
@@ -135,7 +135,7 @@ WHERE shipped_date IS NULL;
 
 The validation confirmed that missing shipping dates were successfully preserved as SQL `NULL` values after the SSIS transformation.
 
-<img width="918" height="618" alt="image" src="https://github.com/user-attachments/assets/4b6a1c2d-f9ce-4f3e-bada-20348a5cfce1" />
+![NULL Validation](screenshots/null_validation.png)
 
 ### Referential Integrity Validation
 
@@ -176,7 +176,7 @@ JOIN dbo.products p
 GROUP BY p.product_name
 ORDER BY revenue DESC;
 ```
-<img width="586" height="54" alt="image" src="https://github.com/user-attachments/assets/5b62665f-498c-43ee-98dd-b68991b9d64d" />
+![Top Products by Revenue](screenshots/top_products_revenue.png)
 
 **Key Insight:** Trek Slash 8 27.5 - 2016 generated the highest revenue at approximately **$616K**, with **154 units sold**. Several other Trek models also ranked among the top-performing products.
 
@@ -202,7 +202,7 @@ GROUP BY s.store_name
 ORDER BY revenue DESC;
 ```
 
-<img width="546" height="151" alt="image" src="https://github.com/user-attachments/assets/9774a5b6-5b9d-42e1-94ed-5cc5f82890f0" />
+![Store Performance](screenshots/store_performance.png)
 
 
 **Key Insight:** Baldwin Bikes was the strongest-performing location, generating approximately **$5.83M in revenue** from **1,093 orders** and **4,779 units sold**. This represented roughly **68% of total revenue across the three stores**, substantially outperforming Santa Cruz Bikes and Rowlett Bikes.
@@ -233,7 +233,7 @@ GROUP BY
 ORDER BY total_spent DESC;
 ```
 
-<img width="691" height="331" alt="image" src="https://github.com/user-attachments/assets/a9b84b02-0d03-4cbe-9a4c-4d9b2f55c488" />
+![Customer Analysis](screenshots/customer_analysis.png)
 
 
 **Key Insight:** Pamelia Newman was the highest-value customer, generating approximately **$37.8K in total spending** across **3 orders** and **18 units purchased**. Abby Gamble followed closely with approximately **$37.5K from only 2 orders**, suggesting that customer value was influenced by both purchase frequency and average order value.
