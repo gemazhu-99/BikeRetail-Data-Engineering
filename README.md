@@ -310,3 +310,8 @@ BikeRetail-Data-Engineering/
 └── sql/
     ├── data_validation.sql
     └── business_analysis.sql
+```
+
+- **`ssis/Package.dtsx`** — SSIS package containing the complete ETL workflow from CSV sources to SQL Server.
+- **`sql/data_validation.sql`** — SQL queries used to validate row counts, NULL handling, and referential integrity.
+- **`sql/business_analysis.sql`** — SQL queries used for product, store, and customer-level business analysis.
