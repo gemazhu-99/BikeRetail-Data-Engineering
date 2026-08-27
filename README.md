@@ -324,3 +324,12 @@ Potential enhancements to the pipeline include:
 - **Incremental Loading** — Replace full-table reloads with incremental loading strategies to process only new or updated records.
 - **Enhanced Error Handling** — Add SSIS error outputs, logging, and rejected-record handling to improve pipeline reliability and troubleshooting.
 - **BI Integration** — Connect the SQL Server database to Power BI to build automated dashboards for sales, store, and customer performance.
+
+## Skills Demonstrated
+
+- ETL pipeline development with SQL Server Integration Services (SSIS)
+- Relational database design and SQL Server data loading
+- Data cleaning, transformation, and data type handling
+- Data quality validation and referential integrity checks
+- SQL joins, aggregations, and business analysis
+- ETL debugging and dependency management
