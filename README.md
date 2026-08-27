@@ -300,15 +300,13 @@ This ensured that parent tables were populated before dependent transactional ta
 ## Project Structure
 
 ```text
-BikeRetail_ETL/
-├── data/
-├── sql/
-│   ├── create_tables.sql
-│   ├── validation_queries.sql
-│   └── business_analysis.sql
-├── screenshots/
-│   ├── database_design/
-│   ├── etl_pipeline/
-│   └── sql_analysis/
-├── Package.dtsx
-└── README.md
+BikeRetail-Data-Engineering/
+│
+├── README.md
+│
+├── ssis/
+│   └── Package.dtsx
+│
+└── sql/
+    ├── data_validation.sql
+    └── business_analysis.sql
