@@ -315,3 +315,12 @@ BikeRetail-Data-Engineering/
 - **`ssis/Package.dtsx`** — SSIS package containing the complete ETL workflow from CSV sources to SQL Server.
 - **`sql/data_validation.sql`** — SQL queries used to validate row counts, NULL handling, and referential integrity.
 - **`sql/business_analysis.sql`** — SQL queries used for product, store, and customer-level business analysis.
+
+## Future Improvements
+
+Potential enhancements to the pipeline include:
+
+- **Automated ETL Execution** — Schedule the SSIS package using SQL Server Agent to support recurring data ingestion.
+- **Incremental Loading** — Replace full-table reloads with incremental loading strategies to process only new or updated records.
+- **Enhanced Error Handling** — Add SSIS error outputs, logging, and rejected-record handling to improve pipeline reliability and troubleshooting.
+- **BI Integration** — Connect the SQL Server database to Power BI to build automated dashboards for sales, store, and customer performance.
