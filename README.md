@@ -49,14 +49,10 @@ Functional dependencies were analyzed to validate normalization, reduce data red
 #### Final Relational Schema
 
 ![Relational Schema](screenshots/relational_schema.png)
-<img width="1024" height="444" alt="image" src="https://github.com/user-attachments/assets/6c4cc1bf-0bcb-4f02-8531-5a468b7213d1" />
-
 
 #### Functional Dependency Diagram
 
 ![Functional Dependency Diagram](screenshots/dependency_diagram.png)
-<img width="1038" height="492" alt="image" src="https://github.com/user-attachments/assets/b39001a3-6b31-4c73-8574-f3fb78785c28" />
-
 
 ## ETL Architecture
 
