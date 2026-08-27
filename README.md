@@ -303,14 +303,25 @@ BikeRetail-Data-Engineering/
 ├── ssis/
 │   └── Package.dtsx
 │
-└── sql/
-    ├── data_validation.sql
-    └── business_analysis.sql
+├── sql/
+│   ├── data_validation.sql
+│   └── business_analysis.sql
+│
+└── screenshots/
+    ├── control_flow.png
+    ├── data_flow.png
+    ├── erd.png
+    ├── null_handling.png
+    ├── null_validation.png
+    ├── top_products_revenue.png
+    ├── store_performance.png
+    └── customer_analysis.png
 ```
 
-- **`ssis/Package.dtsx`** — SSIS package containing the complete ETL workflow from CSV sources to SQL Server.
-- **`sql/data_validation.sql`** — SQL queries used to validate row counts, NULL handling, and referential integrity.
-- **`sql/business_analysis.sql`** — SQL queries used for product, store, and customer-level business analysis.
+- `ssis/Package.dtsx` — SSIS package containing the complete ETL workflow from CSV sources to SQL Server.
+- `sql/data_validation.sql` — SQL queries used to validate row counts, NULL handling, and referential integrity.
+- `sql/business_analysis.sql` — SQL queries used for product, store, and customer-level business analysis.
+- `screenshots/` — Visual documentation of the database design, SSIS ETL workflow, data transformations, validation results, and business analysis.
 
 ## Future Improvements
 
