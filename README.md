@@ -47,13 +47,10 @@ The conceptual model was translated into a normalized relational schema consisti
 Functional dependencies were reviewed across the schema to validate table structure, reduce data redundancy, and maintain data integrity.
 
 #### Final Relational Schema
-<img width="984" height="492" alt="image" src="https://github.com/user-attachments/assets/5dfb3a9d-12e9-4dc4-a506-51b695e99793" />
 
 ![Relational Schema](screenshots/relational_schema.png)
 
 #### Functional Dependency Diagram
-
-<img width="1051" height="546" alt="image" src="https://github.com/user-attachments/assets/f0760a2d-2e74-452d-9312-c7ef73c127b5" />
 
 ![Functional Dependency Diagram](screenshots/dependency_diagram.png)
 
