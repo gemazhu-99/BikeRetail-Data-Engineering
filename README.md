@@ -44,7 +44,7 @@ During implementation, the conceptual model was refined to align with the BikeSt
 
 The conceptual model was translated into a normalized relational schema consisting of 9 SQL Server tables with defined primary and foreign key relationships.
 
-Functional dependencies were reviewed across the schema to validate table structure, reduce data redundancy, and maintain data integrity.
+Functional dependencies were analyzed to validate normalization, reduce data redundancy, and maintain data integrity across the relational schema.
 
 #### Final Relational Schema
 
