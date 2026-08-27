@@ -30,18 +30,32 @@ The final SQL Server database contains 9 relational tables:
 
 `brands` · `categories` · `customers` · `stores` · `staffs` · `products` · `stocks` · `orders` · `order_items`
 
+The database was designed around core retail entities including customers, orders, products, stores, staff, and inventory, with primary and foreign key relationships used to maintain referential integrity.
+
 ### Conceptual ER Diagram
 
-The initial ERD was developed to model the major business entities and relationships across products, customers, stores, staff, inventory, and orders.
+An initial ERD was developed to model the major business entities, cardinalities, and relationships before implementation.
 
-During implementation, the schema was aligned with the BikeStores source structure, resulting in nine final tables in SQL Server.
+During implementation, the conceptual model was refined to align with the BikeStores source structure. For example, the initial product-category junction design was simplified by storing `category_id` as a foreign key in the `products` table, resulting in the final 9-table SQL Server schema.
 
+![Conceptual ER Diagram](screenshots/erd.png)
 
-![Database ERD](screenshots/erd.png)
+### Relational Schema & Normalization
 
+The conceptual model was translated into a normalized relational schema consisting of 9 SQL Server tables with defined primary and foreign key relationships.
 
+Functional dependencies were reviewed across the schema to validate table structure, reduce data redundancy, and maintain data integrity.
 
-The schema preserves primary/foreign key relationships between customers, orders, products, stores, staff, and inventory.
+#### Final Relational Schema
+<img width="984" height="492" alt="image" src="https://github.com/user-attachments/assets/5dfb3a9d-12e9-4dc4-a506-51b695e99793" />
+
+![Relational Schema](screenshots/relational_schema.png)
+
+#### Functional Dependency Diagram
+
+<img width="1051" height="546" alt="image" src="https://github.com/user-attachments/assets/f0760a2d-2e74-452d-9312-c7ef73c127b5" />
+
+![Functional Dependency Diagram](screenshots/dependency_diagram.png)
 
 ## ETL Architecture
 
