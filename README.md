@@ -10,6 +10,12 @@ This project demonstrates a complete ETL workflow from raw CSV files to an analy
 
 Raw CSV Files → SSIS ETL → Data Cleaning & Transformation → SQL Server → Data Validation → Business Analysis
 
+## Data Source
+
+This project uses the **Bike Store Relational Database** dataset available on Kaggle. The dataset is a sample retail bike store database originally sourced from SQLServerTutorial.net and contains customer, product, inventory, store, staff, order, and order-item data.
+
+**Source:** [Bike Store Relational Database | SQL - Kaggle](https://www.kaggle.com/datasets/dillonmyrick/bike-store-sample-database)
+
 ## Tech Stack
 
 - **SQL Server** — Relational database and analytics
